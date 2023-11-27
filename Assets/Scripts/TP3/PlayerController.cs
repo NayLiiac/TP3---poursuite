@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 
 /// <summary>
@@ -19,6 +20,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     float _moveSpeed;
 
+
+    public bool isPlayerAlive = true;
+
+    [Header("Noise Things")]
+    public Vector3 noiseLocation;
+    public float timeSinceLastNoise = 0;
+    public bool noiseWasMade = false;
+
+
     void Awake()
     {
         _characterController = GetComponent<CharacterController>();
@@ -26,15 +36,38 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        Vector3 inputDirection = new Vector3()
-        {
-            x = Input.GetAxis("Horizontal"),
-            y = 0,
-            z = Input.GetAxis("Vertical")
-        };
+        if (isPlayerAlive) {
 
-        Vector3 velocity = inputDirection * _moveSpeed * Time.deltaTime;
+            Vector3 inputDirection = new Vector3()
+            {
+                x = Input.GetAxis("Horizontal"),
+                y = 0,
+                z = Input.GetAxis("Vertical")
+            };
 
-        _characterController.Move(velocity);
+            Vector3 velocity = inputDirection * _moveSpeed * Time.deltaTime;
+
+            _characterController.Move(velocity);
+
+            timeSinceLastNoise += Time.deltaTime;
+
+            if (Input.GetButton("Fire1")) {
+
+                if(timeSinceLastNoise > 20) {
+
+                    OnNoiseMade();
+                    timeSinceLastNoise= 0;
+
+                }
+            }
+        }
+    }
+
+    
+    public void OnNoiseMade() {
+        // Debug.Log("Very Noisy");
+        
+        noiseLocation = this.transform.position; 
+        noiseWasMade = true;
     }
 }

@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Scripting.APIUpdating;
 
-// Je n'ai pas compris les étapes à réaliser pour A* même en ayant compris son principe, ainsi j'ai commenté le code d'une solution pour essayer de le comprendre. 
+// Je n'ai pas compris les étapes à réaliser pour A* même en ayant compris son principe,
+// ainsi j'ai commenté le code de la solution que Trystan m'a donné pour essayer de le comprendre.
+// Je n'ai pas réussi mais je ne voulais pas complètement abandonner non plus.
 public class EnemyBrainAStar : MonoBehaviour
 {
     public List<Waypoint> waypoints;
@@ -104,7 +106,7 @@ public class EnemyBrainAStar : MonoBehaviour
         return closestWaypoint;
     }
 
-    // Définit le chemin le plus court, on empile les waypoints ouverts et on met dans une liste les waypoints fermés.
+    // Algorithme A*
     void ShorterPath(Waypoint start) {
         Stack<Waypoint> openWaypoints = new Stack<Waypoint>();
         List<Waypoint> closedWaypoints = new List<Waypoint>();
