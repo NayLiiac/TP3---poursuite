@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 // Video used to help to understand better the design pattern: https://www.youtube.com/watch?v=Vt8aZDPzRjI
 
@@ -7,7 +5,6 @@ public class EnemyStateManager : MonoBehaviour
 { 
     EnemyBaseState currentState;
 
-    public MoveDestination moveDestination;
     public PlayerController playerController;
 
     public PursuitState pursuitState = new PursuitState();
@@ -17,19 +14,16 @@ public class EnemyStateManager : MonoBehaviour
 
 
     void Start() {
-
         currentState = patrollingState;
         
         currentState.EnterState(this);
     }
 
     void Update() {
-        
         currentState.UpdateState(this);
     }
 
-    public void OnCollisionEnter(Collision collision)
-    {
+    public void OnCollisionEnter(Collision collision) {
         currentState.CollisionEnter(this, collision);
     }
 

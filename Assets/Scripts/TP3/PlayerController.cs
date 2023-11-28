@@ -1,4 +1,3 @@
-using UnityEditor;
 using UnityEngine;
 
 /// <summary>
@@ -65,7 +64,7 @@ public class PlayerController : MonoBehaviour
 
     
     public void OnNoiseMade() {
-        // Debug.Log("Very Noisy");
+        Debug.Log("The player made a big noise");
         
         noiseLocation = this.transform.position; 
         noiseWasMade = true;

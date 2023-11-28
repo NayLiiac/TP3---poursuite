@@ -1,10 +1,12 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class AlertState : EnemyBaseState
 {
     public float alertTime;
+    public NavMeshAgent agent;
     public override void EnterState(EnemyStateManager enemy) {
-        enemy.moveDestination.agent.destination = enemy.playerController.noiseLocation;
+        agent.destination = enemy.playerController.noiseLocation;
     }
 
 
@@ -18,7 +20,7 @@ public class AlertState : EnemyBaseState
                 alertTime += Time.deltaTime;
             }
             // checks if the enemy is near the player during inspection of the noise made
-            else if(MathHelper.VectorDistance(enemy.transform.position, enemy.moveDestination.playerPosition.position) <= 3f)
+            else if(MathHelper.VectorDistance(enemy.transform.position, enemy.pursuitState.playerPosition.position) <= 3f)
             {
                 enemy.SwitchState(enemy.pursuitState);
                 alertTime= 0;

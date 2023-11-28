@@ -1,11 +1,13 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class DiscussState : EnemyBaseState
 {
     float timePassed = 0;
+    public NavMeshAgent agent;
     public override void EnterState(EnemyStateManager enemy) {
-
-        enemy.moveDestination.agent.destination = enemy.moveDestination.colleaguePosition.transform.position;
+        Debug.Log("Discuss State");
+        agent.destination = enemy.patrollingState.colleaguePosition.transform.position;
         enemy.patrollingState.canChat = false;
         enemy.patrollingState.StartCoroutine(enemy.patrollingState.EnemyCanChat());
     }
@@ -16,7 +18,7 @@ public class DiscussState : EnemyBaseState
             timePassed += Time.deltaTime;
         }
         else {
-
+            Debug.Log("Hum hum, sorry bro, I have some work to do");
             enemy.SwitchState(enemy.patrollingState);
             timePassed = 0;
         }

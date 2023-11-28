@@ -444,6 +444,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e32d999a0293704f986c263a71d67ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  agent: {fileID: 1469859793}
 --- !u!114 &185936053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -456,7 +457,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04e4ae4eb391090449ff441c0144ed0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  playerPosition: {fileID: 6255727}
+  agent: {fileID: 1469859793}
 --- !u!114 &185936054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -469,8 +471,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2dc1804b4dc7704f82dbc33823f4350, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  currentTarget: {fileID: 0}
   canChat: 1
+  colleaguePosition: {fileID: 121709773}
+  waypoints:
+  - {fileID: 591906777}
+  - {fileID: 1851112968}
+  - {fileID: 241230614}
+  - {fileID: 832286535}
+  index: 0
+  agent: {fileID: 1469859793}
+  arrived: 0
+  coroutineLaunched: 0
 --- !u!4 &185936055
 Transform:
   m_ObjectHideFlags: 0
@@ -499,6 +511,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   alertTime: 0
+  agent: {fileID: 1469859793}
 --- !u!1 &241230614
 GameObject:
   m_ObjectHideFlags: 0
@@ -2530,7 +2543,6 @@ GameObject:
   - component: {fileID: 1469859795}
   - component: {fileID: 1469859794}
   - component: {fileID: 1469859793}
-  - component: {fileID: 1469859798}
   - component: {fileID: 1469859790}
   m_Layer: 0
   m_Name: EnemyBrain (1)
@@ -2551,7 +2563,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69349ee5d54497b45a48941c3dea963e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveDestination: {fileID: 1469859798}
   playerController: {fileID: 6255729}
   pursuitState: {fileID: 185936053}
   patrollingState: {fileID: 185936054}
@@ -2669,30 +2680,6 @@ Transform:
   - {fileID: 1621198920}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1469859798
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1469859789}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2bb25040d7fad504fa877571d64c97c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goalPosition: {fileID: 0}
-  playerPosition: {fileID: 6255727}
-  colleaguePosition: {fileID: 121709773}
-  waypoints:
-  - {fileID: 591906777}
-  - {fileID: 1851112968}
-  - {fileID: 241230614}
-  - {fileID: 832286535}
-  index: 0
-  agent: {fileID: 1469859793}
-  arrived: 0
-  coroutineLaunched: 0
 --- !u!1 &1617209542
 GameObject:
   m_ObjectHideFlags: 0
